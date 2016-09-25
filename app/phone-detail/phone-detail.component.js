@@ -1,8 +1,7 @@
 import phoneDetailTemplate from 'raw!./phone-detail.template.html';
 
+//@injectInline
 class PhoneDetailController {
-  static $inject = ['$routeParams', 'Phone'];
-
   constructor($routeParams, Phone) {
     const { phoneId } = $routeParams;
 
@@ -15,6 +14,8 @@ class PhoneDetailController {
     this.mainImageUrl = imageUrl;
   }
 };
+
+PhoneDetailController.$inject = ['$routeParams', 'Phone'];
 
 export default {
   template: phoneDetailTemplate,

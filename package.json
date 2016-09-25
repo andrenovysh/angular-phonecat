@@ -8,6 +8,7 @@
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
+    "babel-plugin-syntax-decorators": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-preset-es2015": "^6.14.0",
     "bower": "^1.7.7",
@@ -22,8 +23,9 @@
     "webpack": "^2.1.0-beta.25"
   },
   "scripts": {
+    "build": "npm install && webpack",
     "postinstall": "bower install",
-    "prestart": "npm install",
+    "prestart": "npm install && webpack",
     "start": "http-server ./app -a localhost -p 8000 -c-1",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",

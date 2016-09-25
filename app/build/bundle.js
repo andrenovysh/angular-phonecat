@@ -263,7 +263,6 @@ var PhoneDetailController = function () {
   return PhoneDetailController;
 }();
 
-PhoneDetailController.$inject = ['$routeParams', 'Phone'];
 ;
 
 exports.default = {
@@ -326,13 +325,16 @@ var _phoneListTemplate2 = _interopRequireDefault(_phoneListTemplate);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 var PhoneListController = function PhoneListController(Phone) {
+  _classCallCheck(this, PhoneListController);
+
   this.phones = Phone.query();
   this.orderProp = 'age';
 };
 
-PhoneListController.$inject = ['Phone'];
-
+PhoneListController.$inject = ['Phone']
 exports.default = {
   template: _phoneListTemplate2.default,
   controller: PhoneListController
