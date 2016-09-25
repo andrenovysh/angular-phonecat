@@ -1,4 +1,9 @@
-'use strict';
+import phoneService from './phone.service.js';
 
-// Define the `core.phone` module
-angular.module('core.phone', ['ngResource']);
+const $name = 'core.phone';
+
+angular
+	.module($name, ['ngResource'])
+	.factory('Phone', phoneService);
+
+export default $name;

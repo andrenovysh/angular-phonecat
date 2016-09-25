@@ -1,15 +1,15 @@
-'use strict';
+import angular from 'angular';
 
-angular.
-  module('core.phone').
-  factory('Phone', ['$resource',
-    function($resource) {
-      return $resource('phones/:phoneId.json', {}, {
-        query: {
-          method: 'GET',
-          params: {phoneId: 'phones'},
-          isArray: true
-        }
-      });
+const factory = ($resource) => {
+  return $resource('phones/:phoneId.json', {}, {
+    query: {
+      method: 'GET',
+      params: { phoneId: 'phones' },
+      isArray: true
     }
-  ]);
+  });
+};
+
+factory.$inject = ['$resource'];
+
+export default factory;

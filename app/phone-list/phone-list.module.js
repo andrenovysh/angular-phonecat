@@ -1,4 +1,15 @@
-'use strict';
+import angular from 'angular';
 
-// Define the `phoneList` module
-angular.module('phoneList', ['core.phone']);
+import corePhone from '../core/phone/phone.module.js';
+import phoneList from './phone-list.component.js';
+
+const $name = 'phoneList';
+
+angular
+  .module($name, [corePhone])
+  .component($name, {
+    template: phoneList.template,
+    controller:  phoneList.controller
+  });
+
+ export default $name;

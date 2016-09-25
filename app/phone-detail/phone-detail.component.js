@@ -1,20 +1,22 @@
-'use strict';
+import phoneDetailTemplate from 'raw!./phone-detail.template.html';
 
-// Register `phoneDetail` component, along with its associated controller and template
-angular.
-  module('phoneDetail').
-  component('phoneDetail', {
-    templateUrl: 'phone-detail/phone-detail.template.html',
-    controller: ['$routeParams', 'Phone',
-      function PhoneDetailController($routeParams, Phone) {
-        var self = this;
-        self.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-          self.setImage(phone.images[0]);
-        });
+class PhoneDetailController {
+  static $inject = ['$routeParams', 'Phone'];
 
-        self.setImage = function setImage(imageUrl) {
-          self.mainImageUrl = imageUrl;
-        };
-      }
-    ]
-  });
+  constructor($routeParams, Phone) {
+    const { phoneId } = $routeParams;
+
+    this.phone = Phone.get({ phoneId }, ({ images: [imageUrl] }) => {
+      this.setImage(imageUrl);
+    });
+  }
+
+  setImage(imageUrl) {
+    this.mainImageUrl = imageUrl;
+  }
+};
+
+export default {
+  template: phoneDetailTemplate,
+  controller: PhoneDetailController
+};

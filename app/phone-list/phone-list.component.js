@@ -1,14 +1,14 @@
-'use strict';
+import angular from 'angular';
+import phoneListTemplate from 'raw!./phone-list.template.html';
 
-// Register `phoneList` component, along with its associated controller and template
-angular.
-  module('phoneList').
-  component('phoneList', {
-    templateUrl: 'phone-list/phone-list.template.html',
-    controller: ['Phone',
-      function PhoneListController(Phone) {
-        this.phones = Phone.query();
-        this.orderProp = 'age';
-      }
-    ]
-  });
+const PhoneListController = function(Phone) {
+  this.phones = Phone.query();
+  this.orderProp = 'age';
+};
+
+PhoneListController.$inject = ['Phone']
+
+export default {
+  template: phoneListTemplate,
+  controller: PhoneListController
+};

@@ -1,4 +1,10 @@
-'use strict';
+import corePhone from './phone/phone.module.js';
+import checkmarkFilter from './checkmark/checkmark.filter.js';
 
-// Define the `core` module
-angular.module('core', ['core.phone']);
+const $name = 'core';
+
+angular
+	.module($name, [corePhone])
+	.filter('checkmark', checkmarkFilter);
+
+export default $name;
